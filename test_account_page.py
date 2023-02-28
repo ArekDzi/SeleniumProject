@@ -9,8 +9,8 @@ def test_register_user(web_driver: WebDriver):
 
 def test_login_user(web_driver: WebDriver):
     login_message = my_account_page.login_user(web_driver)
-    assert my_account_page.Constant_User.username in login_message, + \
-        f"{my_account_page.Constant_User.username} dose not present in {login_message}"
+    assert my_account_page.ConstantUser.username in login_message, + \
+        f"{my_account_page.ConstantUser.username} dose not present in {login_message}"
 
 
 def test_logout_user(web_driver: WebDriver):
