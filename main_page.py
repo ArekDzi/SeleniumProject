@@ -9,34 +9,34 @@ import my_account_page
 class ConstantNewsletter:
     newsletter_name: str = 'adsdada'
     newsletter_mail: str = "assd@gmail.com"
-    input_name_box = (By.ID, 'es_txt_name')
-    input_mail_box = (By.ID, 'es_txt_email')
-    subscribe_button = (By.ID, 'es_txt_button')
-    confirmation_text_selector = (By.ID, 'es_msg')
+    input_name_box: str = (By.ID, 'es_txt_name')
+    input_mail_box: str = (By.ID, 'es_txt_email')
+    subscribe_button: str = (By.ID, 'es_txt_button')
+    confirmation_text_selector: str = (By.ID, 'es_msg')
     confirmation_text: str = 'Successfully Subscribed'
 
 class ConstantUserAbcd:
-    haslo = "Abcd123456789!"
-    uzytkownik = "abcdf@gmail.com"
+    haslo: str = "Abcd123456789!"
+    uzytkownik: str = "abcdf@gmail.com"
 
 
 class ConstantUserAutomaty:
-    login = 'l.miotk.py'
-    password = "Aut0m@ty$a$uper!"
+    login: str = 'l.miotk.py'
+    password: str = "Aut0m@ty$a$uper!"
 
 
 class ConstantMostWanted:
-    zakladka_most_wanted = (By.XPATH, '//*[@id="menu-item-128"]/a')
-    naglowek_most_wanted = (By.XPATH, '//*[@id="page"]/div/div/div[2]/div/h1')
-    most_wanted_txt = "most wanted"
+    zakladka_most_wanted: str = (By.XPATH, '//*[@id="menu-item-128"]/a')
+    naglowek_most_wanted: str = (By.XPATH, '//*[@id="page"]/div/div/div[2]/div/h1')
+    most_wanted_txt: str = "most wanted"
 
 
 class ConstantBuyProduct:
-    shop_tab = (By.ID, "menu-item-142")
-    add_to_cart_button = (By.XPATH, "//a[@data-product_id='17']")
-    cart_button = (By.XPATH, '//*[@id="page"]/header[1]/div/div/div/ul/li[2]/a')
-    product_box = (By.XPATH, '//*[@id="post-6"]/div[2]/form/table/tbody/tr[1]/td[3]')
-    product_little_black_top = "Little Black Top"
+    shop_tab: str = (By.ID, "menu-item-142")
+    add_to_cart_button: str = (By.XPATH, "//a[@data-product_id='17']")
+    cart_button: str = (By.XPATH, '//*[@id="page"]/header[1]/div/div/div/ul/li[2]/a')
+    product_box: str = (By.XPATH, '//*[@id="post-6"]/div[2]/form/table/tbody/tr[1]/td[3]')
+    product_little_black_top: str = "Little Black Top"
 
 
 def most_wanted_initialization(web_driver: WebDriver) -> str:

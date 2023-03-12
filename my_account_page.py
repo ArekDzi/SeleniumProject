@@ -1,7 +1,7 @@
 import string
+import time
 from random import choice
 from typing import Tuple
-from selenium.webdriver import Keys
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -45,26 +45,24 @@ class ConstantShippingAddress:
     address_confirmation_text: str = 'Address changed successfully.'
 
 
-def create_user():
+def create_user() -> str:
     user = "".join(choice(string.ascii_letters) for i in range(10)) + \
            "".join(choice(string.digits) for i in range(10))
     return user
 
 
-def create_password():
+def create_password() -> str:
     characters = string.ascii_letters + string.digits + string.punctuation
     password = "".join(choice(characters) for i in range(15))
     return password
 
 
-def register_user(web_driver):
+def register_user(web_driver) -> tuple[str, str]:
     user = create_user()
     web_driver.find_element(*ConstantRegister.account_button).click()
     web_driver.find_element(*ConstantRegister.email_input_box).send_keys(user + "@gmail.com")
+    time.sleep(1)  # it is needed to slow down password sending, possible bug
     web_driver.find_element(*ConstantRegister.password_input_box).send_keys(create_password())
-    web_driver.find_element(*ConstantRegister.email_input_box).click()
-    web_driver.find_element(*ConstantRegister.password_input_box).send_keys(Keys.BACKSPACE)
-    # it is needed to delete last char from password to make Register button available
     WebDriverWait(web_driver, 30).until(ec.element_to_be_clickable(ConstantRegister.register_button))
     web_driver.find_element(*ConstantRegister.register_button).click()
     WebDriverWait(web_driver, 30).until(ec.presence_of_element_located(ConstantRegister.hello_message))
@@ -73,7 +71,7 @@ def register_user(web_driver):
     return hello_message, user
 
 
-def login_user(web_driver):
+def login_user(web_driver) -> str:
     web_driver.find_element(*ConstantRegister.account_button).click()
     web_driver.find_element(*ConstantUser.username_input_box).send_keys(ConstantUser.username + "@gmail.com")
     web_driver.find_element(*ConstantUser.password_input_box).send_keys(ConstantUser.password)
@@ -83,7 +81,7 @@ def login_user(web_driver):
     return login_message
 
 
-def logout_user(web_driver):
+def logout_user(web_driver) -> bool:
     login_user(web_driver)
     web_driver.find_element(*ConstantUser.logout_button).click()
     web_driver.find_element(*ConstantUser.logout_confirmation).click()
@@ -92,7 +90,7 @@ def logout_user(web_driver):
     return bool(web_driver.find_element(*ConstantRegister.login_title))
 
 
-def shipping_address_setting(web_driver):
+def shipping_address_setting(web_driver) -> bool:
     register_user(web_driver)
     web_driver.find_element(*ConstantShippingAddress.addresses_button).click()
     web_driver.find_element(*ConstantShippingAddress.edit_shipping_address).click()
