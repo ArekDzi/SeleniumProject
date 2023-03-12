@@ -19,11 +19,11 @@ def config():
 
 @pytest.fixture()
 def web_driver(config) -> WebDriver:
-    if config['browser'] == 'chrome':
+    if config['browser'] == 'chrome' or 'Chrome':
         driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
-    elif config['browser'] == 'firefox':
+    elif config['browser'] == 'firefox' or 'Firefox':
         driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-    elif config['browser'] == 'edge':
+    elif config['browser'] == 'edge' or 'Edge':
         driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
     else:
         raise Exception(f'"{config["browser"]}" is not a supported browser')
