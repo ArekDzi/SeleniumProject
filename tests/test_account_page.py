@@ -1,5 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
-import my_account_page
+from pages import my_account_page
 
 
 def test_register_user(web_driver: WebDriver):

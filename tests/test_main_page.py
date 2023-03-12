@@ -1,5 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
-import main_page
+from pages import main_page
 
 
 def test_most_wanted_tab(web_driver: WebDriver):
