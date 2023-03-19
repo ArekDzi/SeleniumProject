@@ -14,7 +14,7 @@ def create_user() -> str:
 
 def create_password() -> str:
     characters = string.ascii_letters + string.digits + string.punctuation
-    password = "".join(choice(characters) for i in range(15))
+    password = "".join(choice(characters) for _ in range(15))
     return password
 
 
