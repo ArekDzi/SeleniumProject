@@ -21,5 +21,5 @@ def test_logout_user(web_driver: WebDriver):
 
 def test_shipping_address_setting(web_driver: WebDriver):
     successful_change = my_account_page.shipping_address_setting(web_driver)
-    assert True == successful_change, + \
+    assert successful_change, + \
         "Shipping address editing went wrong"
