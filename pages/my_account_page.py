@@ -7,8 +7,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 def create_user() -> str:
-    user = "".join(choice(string.ascii_letters) for i in range(10)) + \
-           "".join(choice(string.digits) for i in range(10))
+    user = "".join(choice(string.ascii_letters) for _ in range(10)) + \
+           "".join(choice(string.digits) for _ in range(10))
     return user
 
 
