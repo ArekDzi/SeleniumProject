@@ -23,7 +23,7 @@ $ pip install -r requirements.txt
 ```
 
 ## Run Automated Tests
-To run selected test without Allure report you need to set pytest as default test runner in Pycharm first
+To run selected test without Allure report you need to set `pytest` as default test runner in PyCharm first
 ```
 File > Settings > Tools > Python Integrated Tools > Testing
 ```
