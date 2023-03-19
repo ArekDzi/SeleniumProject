@@ -12,7 +12,7 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 @pytest.fixture()
 def config():
-    with open("../config.json") as config_file:
+    with open(Path("./config.json")) as config_file:
         data = json.load(config_file)
     return data
 
