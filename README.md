@@ -27,7 +27,7 @@ To run selected test without Allure report you need to set `pytest` as default t
 ```
 File > Settings > Tools > Python Integrated Tools > Testing
 ```
-After that you just need to choose one of the tests from "tests" directory and click "Run test" green arrow.
+After that, you just need to choose one of the tests from `tests` directory and click "Run test" green arrow.
 
 Tests are working on three Browsers: Chrome, Edge or Firefox\
 To test on different browser in [config file](config.json) you can change name to one mentioned above. 
