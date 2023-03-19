@@ -4,12 +4,14 @@ from typing import Dict
 import pytest
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.remote.webdriver import WebDriver
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
 from selenium.webdriver.edge.service import Service as EdgeService
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from selenium.webdriver.chrome.service import Service as ChromiumService
 
 
 @pytest.fixture()
@@ -22,11 +24,14 @@ def config() -> Dict[str, str | int]:
 @pytest.fixture()
 def web_driver(config) -> WebDriver:
     if config['browser'] == 'chrome' or 'Chrome':
-        driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     elif config['browser'] == 'firefox' or 'Firefox':
         driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     elif config['browser'] == 'edge' or 'Edge':
         driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
+    elif config['browser'] == 'Chromium' or 'chromium':
+        driver = webdriver.Chrome(
+            service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
     else:
         raise Exception(f'"{config["browser"]}" is not a supported browser')
 
