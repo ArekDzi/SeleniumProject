@@ -16,8 +16,7 @@ Here you can find a short description of main directories, and it's content
 
 ## Getting Started
 To enjoy the automated tests, develop the framework or adapt it to your own purposes, just download the project or clone
-repository. You need to install packages using pip according to requirements.txt file. Run the command below in
-terminal:
+repository. You need to install packages using pip according to requirements.txt file. Run the command below in terminal:
 ```
 $ pip install -r requirements.txt
 ```

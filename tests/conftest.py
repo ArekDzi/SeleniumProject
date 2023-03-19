@@ -1,4 +1,6 @@
 import json
+from pathlib import Path
+from typing import Dict
 import pytest
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
@@ -11,8 +13,8 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 
 @pytest.fixture()
-def config():
-    with open(Path("./config.json")) as config_file:
+def config() -> Dict[str, str | int]:
+    with open(Path("../config.json")) as config_file:
         data = json.load(config_file)
     return data
 
