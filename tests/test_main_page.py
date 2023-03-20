@@ -3,8 +3,8 @@ from pages import main_page
 
 
 def test_most_wanted_tab(web_driver: WebDriver):
-    most_wanted_title = main_page.most_wanted_initialization(web_driver)
-    assert most_wanted_title.casefold() == main_page.ConstantMostWanted.most_wanted_txt.casefold()
+    assert main_page.most_wanted_initialization(web_driver).casefold() ==\
+           main_page.ConstantMostWanted.most_wanted_txt.casefold()
 
 
 def test_product_purchase(web_driver: WebDriver):
