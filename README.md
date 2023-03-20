@@ -2,7 +2,7 @@
 
 ## Introduction
 This is my first test automation project based on Selenium-Webdriver with Python. It's still developing package of
-automated tests of [www.skleptest.pl](special test) demo website. The collection of tests contains:
+automated tests of [www.skleptest.pl](https://skleptest.pl) demo website. The collection of tests contains:
 * Register user test
 * Login user tests
 * Adding item do cart

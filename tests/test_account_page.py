@@ -14,12 +14,10 @@ def test_login_user(web_driver: WebDriver):
 
 
 def test_logout_user(web_driver: WebDriver):
-    successful_logout = my_account_page.logout_user(web_driver)
-    assert True == successful_logout, + \
+    assert my_account_page.logout_user(web_driver), + \
         f"User dose not logout properly "
 
 
 def test_shipping_address_setting(web_driver: WebDriver):
-    successful_change = my_account_page.shipping_address_setting(web_driver)
-    assert successful_change, + \
+    assert my_account_page.shipping_address_setting(web_driver), + \
         "Shipping address editing went wrong"
