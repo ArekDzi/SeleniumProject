@@ -1,4 +1,4 @@
 {
-  "browser": "chrome",
+  "browser": "chromium",
   "wait_time": 10
 }

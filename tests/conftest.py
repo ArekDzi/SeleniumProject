@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Union
 import pytest
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
@@ -14,22 +14,23 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.chrome.service import Service as ChromiumService
 
 
-@pytest.fixture()
-def config() -> Dict[str, str | int]:
+@pytest.fixture(scope="session")
+def config():
     with open(Path("../config.json")) as config_file:
         data = json.load(config_file)
     return data
 
 
-@pytest.fixture()
+@pytest.fixture(scope="session")
 def web_driver(config) -> WebDriver:
-    if config['browser'] == 'chrome' or 'Chrome':
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    elif config['browser'] == 'firefox' or 'Firefox':
+    if config["browser"] == 'chrome':
+        driver = webdriver.Chrome(
+            service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
+    elif config['browser'] == 'firefox':
         driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-    elif config['browser'] == 'edge' or 'Edge':
+    elif config['browser'] == 'edge':
         driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
-    elif config['browser'] == 'Chromium' or 'chromium':
+    elif config['browser'] == 'chromium':
         driver = webdriver.Chrome(
             service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
     else:
