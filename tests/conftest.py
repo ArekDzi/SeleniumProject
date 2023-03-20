@@ -24,8 +24,7 @@ def config():
 @pytest.fixture(scope="session")
 def web_driver(config) -> WebDriver:
     if config["browser"] == 'chrome':
-        driver = webdriver.Chrome(
-            service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     elif config['browser'] == 'firefox':
         driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     elif config['browser'] == 'edge':
