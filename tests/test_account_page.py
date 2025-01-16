@@ -1,10 +1,14 @@
 from selenium.webdriver.remote.webdriver import WebDriver
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from pages import my_account_page
+
 
 
 def test_register_user(web_driver: WebDriver):
     hello_message = my_account_page.register_user(web_driver)
-    assert hello_message[1] in hello_message[0], f"{hello_message[1]} dose not present in {hello_message[0]}"
+    assert hello_message[1].lower() in hello_message[0], f"{hello_message[1]} dose not present in {hello_message[0]}"
 
 
 def test_login_user(web_driver: WebDriver):

@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
 
+
 def create_user() -> str:
     user = "".join(choice(string.ascii_letters) for _ in range(10)) + \
            "".join(choice(string.digits) for _ in range(10))
@@ -22,7 +23,7 @@ def register_user(web_driver) -> tuple[str, str]:
     user = create_user()
     web_driver.find_element(*ConstantRegister.account_button).click()
     web_driver.find_element(*ConstantRegister.email_input_box).send_keys(user + "@gmail.com")
-    time.sleep(1)  # it is needed to slow down password sending, possible bug
+    time.sleep(2)  # it is needed to slow down password sending, possible bug
     web_driver.find_element(*ConstantRegister.password_input_box).send_keys(create_password())
     WebDriverWait(web_driver, 30).until(ec.element_to_be_clickable(ConstantRegister.register_button))
     web_driver.find_element(*ConstantRegister.register_button).click()
@@ -45,7 +46,8 @@ def login_user(web_driver) -> str:
 def logout_user(web_driver) -> bool:
     login_user(web_driver)
     web_driver.find_element(*ConstantUser.logout_button).click()
-    web_driver.find_element(*ConstantUser.logout_confirmation).click()
+    #web_driver.find_element(*ConstantUser.logout_confirmation).click()
+    WebDriverWait(web_driver, 30).until(ec.presence_of_element_located(ConstantUser.logout_confirmation))
     web_driver.find_element(*ConstantRegister.account_button).click()
 
     return bool(web_driver.find_element(*ConstantRegister.login_title))

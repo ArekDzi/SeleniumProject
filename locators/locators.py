@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 
 class ConstantRegister:
     account_button: Tuple[str, str] = (By.XPATH, "//li[@class='top-account']")
-    register_button: Tuple[str, str] = (By.XPATH, "//input[@class='woocommerce-Button button' and @name='register']")
+    register_button: Tuple[str, str] = (By.XPATH, "//*[@name='register']")
     email_input_box: Tuple[str, str] = (By.XPATH, "//input[@id='reg_email']")
     password_input_box: Tuple[str, str] = (By.XPATH, '//*[@id="reg_password"]')
     hello_message: Tuple[str, str] = (By.XPATH, "//div[@class='woocommerce-MyAccount-content']")
@@ -15,11 +15,11 @@ class ConstantRegister:
 class ConstantUser:
     username_input_box: Tuple[str, str] = (By.XPATH, '//*[@id="username"]')
     password_input_box: Tuple[str, str] = (By.XPATH, '//*[@id="password"]')
-    login_button: Tuple[str, str] = (By.XPATH, '//*[@id="customer_login"]/div[1]/form/p[3]/input[3]')
-    username: str = 'l.miotk.py'
+    login_button: Tuple[str, str] = (By.XPATH, '//*[@name="login"]')
+    username: str = 'testy123'
     password: str = "Aut0m@ty$a$uper!"
-    logout_button: Tuple[str, str] = (By.XPATH, '//*[@id="post-8"]/div[2]/nav/ul/li[6]/a')
-    logout_confirmation: Tuple[str, str] = (By.XPATH, '//*[@id="post-8"]/div[2]/div[1]/a')
+    logout_button: Tuple[str, str] = (By.XPATH, '//div[@class="woocommerce-MyAccount-content"]//a[text()="Log out"]')
+    logout_confirmation: Tuple[str, str] = (By.XPATH, '//*[@id="page"]/div/div/div[1]/div/header/h1')
 
 
 class ConstantShippingAddress:
@@ -35,7 +35,7 @@ class ConstantShippingAddress:
     street_address: str = "Budowlanych 15"
     town: str = "Gdańsk"
     zip_code: str = "80-298"
-    save_address_button: Tuple[str, str] = (By.XPATH, '//*[@id="post-8"]/div[2]/div/form/div/p/input[1]')
+    save_address_button: Tuple[str, str] = (By.XPATH, '//*[@name="save_address"]')
     address_confirmation: Tuple[str, str] = (By.XPATH, '//*[@id="post-8"]/div[2]/div[1]')
     address_confirmation_text: str = 'Address changed successfully.'
 
@@ -56,7 +56,7 @@ class ConstantUserAbcd:
 
 
 class ConstantUserAutomaty:
-    login: str = 'l.miotk.py'
+    login: str = 'testy123'
     password: str = "Aut0m@ty$a$uper!"
 
 
@@ -67,8 +67,8 @@ class ConstantMostWanted:
 
 
 class ConstantBuyProduct:
-    shop_tab: str = (By.ID, "menu-item-142")
-    add_to_cart_button: str = (By.XPATH, "//a[@data-product_id='17']")
-    cart_button: str = (By.XPATH, '//*[@id="page"]/header[1]/div/div/div/ul/li[2]/a')
+    most_wanted_tap: str = (By.ID, "menu-item-128")
+    add_to_cart_button: str = (By.XPATH, "//*[@data-product_id='31']")
+    cart_button: str = (By.XPATH, '//*[@class="top-cart"]')
     product_box: str = (By.XPATH, '//*[@id="post-6"]/div[2]/form/table/tbody/tr[1]/td[3]')
-    product_little_black_top: str = "Little Black Top"
+    product_little_black_top: str = "FITT Belts"

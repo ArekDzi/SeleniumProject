@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -12,8 +14,10 @@ def most_wanted_initialization(web_driver: WebDriver) -> str:
 
 def buy_product(web_driver: WebDriver) -> str:
     my_account_page.login_user(web_driver)
-    web_driver.find_element(*ConstantBuyProduct.shop_tab).click()
+    web_driver.find_element(*ConstantBuyProduct.most_wanted_tap).click()
     web_driver.find_element(*ConstantBuyProduct.add_to_cart_button).click()
+    wait = WebDriverWait(web_driver, 10)
+    time.sleep(2) # it is needed to slow down
     web_driver.find_element(*ConstantBuyProduct.cart_button).click()
     product_name = web_driver.find_element(*ConstantBuyProduct.product_box).text
 
